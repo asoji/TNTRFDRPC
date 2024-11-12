@@ -2,6 +2,7 @@
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,7 @@ public class Plugin : BasePlugin
         Log = base.Log;
         DiscordRichPresence.Instance.Initialize();
         AddComponent<CustomTNTRFDRPCMonoBehavior>();
+        Harmony.CreateAndPatchAll(typeof(SongInfoPlayerPatcher));
         Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
     }
 
