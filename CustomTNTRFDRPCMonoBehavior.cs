@@ -1,4 +1,5 @@
 ﻿using System;
+using TNTRFDRPC.Rpc;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -6,8 +7,6 @@ using UnityEngine.SceneManagement;
 namespace TNTRFDRPC;
 
 public class CustomTNTRFDRPCMonoBehavior(IntPtr handle): MonoBehaviour(handle) {
-    private int tickCounter = 1;
-
     private void Update() {
         if (DiscordRichPresence.Instance.isInitialized) DiscordRichPresence.Instance.rpc.Invoke();
     }
@@ -27,6 +26,6 @@ public class CustomTNTRFDRPCMonoBehavior(IntPtr handle): MonoBehaviour(handle) {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         Plugin.Log.LogInfo($"OnSceneLoaded {scene.name}");
 
-        DiscordRichPresence.Instance.SceneChange(scene, mode);
+        RpcHelpers.SceneChange(scene, mode);
     }
 }

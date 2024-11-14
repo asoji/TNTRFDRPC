@@ -10,12 +10,10 @@ using UnityEngine.SceneManagement;
 namespace TNTRFDRPC;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-public class Plugin : BasePlugin
-{
+public class Plugin : BasePlugin {
     internal new static ManualLogSource Log;
 
-    public override void Load()
-    {
+    public override void Load() {
         // Plugin startup logic
         Log = base.Log;
         DiscordRichPresence.Instance.Initialize();
